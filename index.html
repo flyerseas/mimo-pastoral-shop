@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>森屿田园 · 原创森系女装</title>
+<style>
+/* ========== CSS Variables & Reset ========== */
+:root {
+  --cream: #FAF6F0;
+  --cream-dark: #F0E8DA;
+  --green-light: #D4E4D2;
+  --green: #7BA seventeen;
+  --green-primary: #6B9E6B;
+  --green-dark: #4A7C59;
+  --green-deep: #3D6B4E;
+  --brown-light: #C4A882;
+  --brown: #9E7B5A;
+  --brown-dark: #7A5C3E;
+  --text-primary: #3E3E3E;
+  --text-secondary: #6B6B6B;
+  --text-light: #9A9A9A;
+  --white: #FFFFFF;
+  --shadow-sm: 0 2px 8px rgba(107,158,107,0.08);
+  --shadow-md: 0 4px 20px rgba(107,158,107,0.12);
+  --shadow-lg: 0 8px 40px rgba(107,158,107,0.15);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ========== Animations ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== Top Announcement Bar ========== */
+.top-bar {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-deep));
+  color: var(--cream);
+  text-align: center;
+  padding: 8px 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.top-bar span {
+  display: inline-block;
+  animation: marquee 18s linear infinite;
+  white-space: nowrap;
+}
+
+/* ========== Header / Nav ========== */
+header {
+  background: rgba(250,246,240,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,158,107,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow var(--transition);
+}
+header.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-deep));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: white;
+  animation: leafSway 3s ease-in-out infinite;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 15px;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--green-primary);
+  border-radius: 2px;
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--green-dark); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-actions { display: flex; gap: 16px; align-items: center; }
+.nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--green-light);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.nav-btn:hover {
+  background: var(--green-primary);
+  border-color: var(--green-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========== Hero Banner ========== */
+.hero {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #e8f0e4 0%, #dce8d6 30%, #f0e8da 70%, #faf6f0 100%);
+}
+.hero-bg-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.hero-circle:nth-child(1) {
+  width: 500px; height: 500px;
+  background: var(--green-primary);
+  top: -100px; right: -80px;
+}
+.hero-circle:nth-child(2) {
+  width: 300px; height: 300px;
+  background: var(--brown-light);
+  bottom: -60px; left: -40px;
+}
+.hero-circle:nth-child(3) {
+  width: 180px; height: 180px;
+  background: var(--green-light);
+  top: 50%; left: 60%;
+}
+.hero-leaf {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.12;
+  animation: leafSway 4s ease-in-out infinite;
+}
+.hero-leaf:nth-child(4) { top: 15%; left: 8%; font-size: 50px; animation-delay: -1s; }
+.hero-leaf:nth-child(5) { top: 60%; right: 12%; font-size: 70px; animation-delay: -2s; }
+.hero-leaf:nth-child(6) { bottom: 15%; left: 25%; font-size: 40px; animation-delay: -0.5s; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 24px;
+}
+.hero-text { animation: fadeInUp 1s ease-out; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  color: var(--green-dark);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(107,158,107,0.2);
+}
+.hero-title {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--green-deep);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--green-primary), var(--brown));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  color: white;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 4px 15px rgba(75,124,89,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(75,124,89,0.4);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  color: var(--green-dark);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid rgba(107,158,107,0.3);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-secondary:hover {
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========== Section Titles ========== */
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--green-primary);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+}
+.section-tag::before, .section-tag::after {
+  content: '—';
+  margin: 0 8px;
+  opacity: 0.4;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.section-desc {
+  font-size: 15px;
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ========== Category Navigation ========== */
+.categories {
+  padding: 72px 0;
+  background: var(--white);
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.cat-card {
+  text-align: center;
+  padding: 32px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--cream);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(107,158,107,0.06), rgba(107,158,107,0.02));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.cat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(107,158,107,0.2);
+}
+.cat-card:hover::before { opacity: 1; }
+.cat-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-light), rgba(212,228,210,0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: transform var(--transition);
+}
+.cat-card:hover .cat-icon { transform: scale(1.1) rotate(5deg); }
+.cat-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.cat-count {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* ========== Hot Products ========== */
+.hot-products {
+  padding: 72px 0;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.product-img {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--green-light), var(--cream-dark));
+}
+.product-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  opacity: 0.5;
+  transition: transform 0.6s ease;
+}
+.product-card:hover .product-img-placeholder { transform: scale(1.08); }
+.product-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, #e85d5d, #d44);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+}
+.product-fav {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all var(--transition);
+  z-index: 2;
+  border: none;
+}
+.product-fav:hover { background: #ffe0e0; transform: scale(1.15); }
+.product-info { padding: 18px; }
+.product-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e05555;
+}
+.product-price small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-light);
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+.product-sales {
+  font-size: 12px;
+  color: var(--text-light);
+  background: var(--cream);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* ========== New Arrivals ========== */
+.new-arrivals {
+  padding: 72px 0;
+  background: var(--white);
+}
+.arrivals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.arrival-card {
+  display: flex;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+.arrival-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.arrival-img {
+  width: 200px;
+  min-height: 200px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  background: linear-gradient(135deg, var(--green-light), var(--cream-dark));
+}
+.arrival-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.arrival-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+.arrival-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.arrival-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.arrival-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.arrival-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e05555;
+}
+.arrival-date {
+  font-size: 12px;
+  color: var(--text-light);
+  background: rgba(107,158,107,0.08);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* ========== Buyer Show ========== */
+.buyer-show {
+  padding: 72px 0;
+  background: linear-gradient(180deg, var(--cream) 0%, #f4efe7 100%);
+}
+.show-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.show-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.show-card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: var(--shadow-lg);
+}
+.show-img {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  position: relative;
+}
+.show-img-bg1 { background: linear-gradient(135deg, #e6efe2, #d8e6d0); }
+.show-img-bg2 { background: linear-gradient(135deg, #f0e8da, #e8dcc8); }
+.show-img-bg3 { background: linear-gradient(135deg, #e2ebe6, #d0ddd6); }
+.show-rating {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #f0a030;
+}
+.show-body { padding: 18px; }
+.show-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.show-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-light), var(--green-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+}
+.show-name { font-size: 13px; color: var(--text-secondary); }
+.show-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ========== Store Announcement ========== */
+.announcement {
+  padding: 72px 0;
+  background: var(--white);
+}
+.announce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.announce-main {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-deep));
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.announce-main::before {
+  content: '🌿';
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 120px;
+  opacity: 0.1;
+}
+.announce-main h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.announce-main p {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.8;
+  position: relative;
+  margin-bottom: 20px;
+}
+.announce-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.announce-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all var(--transition);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.announce-item:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateX(4px);
+}
+.announce-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.announce-item-text h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.announce-item-text p {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 0;
+}
+.announce-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.announce-card {
+  flex: 1;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all var(--transition);
+}
+.announce-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.announce-card-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.announce-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.announce-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ========== Store Features ========== */
+.features {
+  padding: 60px 0;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-deep));
+  color: white;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.feature-item { padding: 20px; }
+.feature-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+}
+.feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.feature-desc {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* ========== Footer ========== */
+footer {
+  background: var(--cream-dark);
+  padding: 48px 0 24px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.footer-brand h3 {
+  font-size: 20px;
+  color: var(--green-deep);
+  margin-bottom: 12px;
+}
+.footer-brand p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: var(--green-primary); }
+.footer-bottom {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .hero { height: 440px; }
+  .hero-title { font-size: 34px; }
+  .nav-links { display: none; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .arrivals-grid { grid-template-columns: 1fr; }
+  .show-grid { grid-template-columns: 1fr; }
+  .announce-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .section-title { font-size: 26px; }
+  .arrival-card { flex-direction: column; }
+  .arrival-img { width: 100%; min-height: 160px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Announcement Bar -->
+<div class="top-bar">
+  <span>🌿 春日上新 · 全场满199减30 · 新客首单立享9折 · 收藏店铺领5元优惠券 🌿</span>
+</div>
+
+<!-- Header -->
+<header id="header">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">🌿</div>
+      森屿田园
+    </a>
+    <nav class="nav-links">
+      <a href="#categories">全部分类</a>
+      <a href="#hot">爆款推荐</a>
+      <a href="#new">新品上新</a>
+      <a href="#show">买家秀</a>
+      <a href="#announce">店铺公告</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-btn" title="搜索">🔍</button>
+      <button class="nav-btn" title="收藏">♡</button>
+      <button class="nav-btn" title="购物车">🛒</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero">
+  <div class="hero-bg-art">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-leaf">🍃</div>
+    <div class="hero-leaf">🌿</div>
+    <div class="hero-leaf">🍂</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-badge">✦ 2026 SPRING COLLECTION ✦</span>
+      <h1 class="hero-title">穿一身<em>春天</em>在身上</h1>
+      <p class="hero-subtitle">森系田园原创设计 · 让每一天都住进森林里</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('hot').scrollIntoView({behavior:'smooth'})">立即逛店</button>
+        <button class="btn-secondary" onclick="document.getElementById('new').scrollIntoView({behavior:'smooth'})">查看新品</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Navigation -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">CATEGORIES</span>
+      <h2 class="section-title">全部分类</h2>
+      <p class="section-desc">精选森系穿搭，找到属于你的田园风格</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card animate-on-scroll">
+        <div class="cat-icon">👗</div>
+        <div class="cat-name">连衣裙</div>
+        <div class="cat-count">86 款</div>
+      </div>
+      <div class="cat-card animate-on-scroll">
+        <div class="cat-icon">👚</div>
+        <div class="cat-name">上衣衬衫</div>
+        <div class="cat-count">124 款</div>
+      </div>
+      <div class="cat-card animate-on-scroll">
+        <div class="cat-icon">👖</div>
+        <div class="cat-name">半裙裤装</div>
+        <div class="cat-count">68 款</div>
+      </div>
+      <div class="cat-card animate-on-scroll">
+        <div class="cat-icon">🧶</div>
+        <div class="cat-name">针织外套</div>
+        <div class="cat-count">52 款</div>
+      </div>
+      <div class="cat-card animate-on-scroll">
+        <div class="cat-icon">🎀</div>
+        <div class="cat-name">配饰周边</div>
+        <div class="cat-count">93 款</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hot Products -->
+<section class="hot-products" id="hot">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">BEST SELLERS</span>
+      <h2 class="section-title">爆款推荐</h2>
+      <p class="section-desc">万人回购，每一件都是行走的春天</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card animate-on-scroll">
+        <div class="product-img">
+          <div class="product-img-placeholder">👗</div>
+          <span class="product-tag">爆款 TOP1</span>
+          <button class="product-fav">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-name">碎花田园连衣裙 法式复古方领收腰A字裙</div>
+          <div class="product-desc">雪纺 · 碎花印花 · S-XXL</div>
+          <div class="product-bottom">
+            <span class="product-price">¥168 <small>¥299</small></span>
+            <span class="product-sales">月销 3200+</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-img">
+          <div class="product-img-placeholder">👚</div>
+          <span class="product-tag">爆款 TOP2</span>
+          <button class="product-fav">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-name">森系刺绣衬衫 棉麻宽松泡泡袖上衣</div>
+          <div class="product-desc">棉麻混纺 · 刺绣工艺 · 均码</div>
+          <div class="product-bottom">
+            <span class="product-price">¥128 <small>¥219</small></span>
+            <span class="product-sales">月销 2800+</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-img">
+          <div class="product-img-placeholder">🧶</div>
+          <span class="product-tag">爆款 TOP3</span>
+          <button class="product-fav">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-name">日系针织开衫 温柔风薄款外套 百搭春秋</div>
+          <div class="product-desc">针织 · 多色可选 · M-XXL</div>
+          <div class="product-bottom">
+            <span class="product-price">¥158 <small>¥268</small></span>
+            <span class="product-sales">月销 2100+</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-img">
+          <div class="product-img-placeholder">👖</div>
+          <span class="product-tag">热卖</span>
+          <button class="product-fav">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-name">棉麻高腰半身裙 A字伞裙 森女文艺长裙</div>
+          <div class="product-desc">棉麻 · 高腰设计 · S-XL</div>
+          <div class="product-bottom">
+            <span class="product-price">¥138 <small>¥238</small></span>
+            <span class="product-sales">月销 1900+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New Arrivals -->
+<section class="new-arrivals" id="new">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">NEW ARRIVALS</span>
+      <h2 class="section-title">新品上新</h2>
+      <p class="section-desc">每周上新，抢先一步做春天的人</p>
+    </div>
+    <div class="arrivals-grid">
+      <div class="arrival-card animate-on-scroll">
+        <div class="arrival-img">🌸</div>
+        <div class="arrival-info">
+          <span class="arrival-badge">3月18日上新</span>
+          <h3 class="arrival-name">樱花粉蕾丝拼接连衣裙</h3>
+          <p class="arrival-text">温柔樱花粉配色，蕾丝与雪纺的浪漫碰撞，适合春日踏青和约会穿搭。</p>
+          <div class="arrival-meta">
+            <span class="arrival-price">¥188</span>
+            <span class="arrival-date">🆕 刚上架</span>
+          </div>
+        </div>
+      </div>
+      <div class="arrival-card animate-on-scroll">
+        <div class="arrival-img">🌿</div>
+        <div class="arrival-info">
+          <span class="arrival-badge">3月15日上新</span>
+          <h3 class="arrival-name">薄荷绿棉麻套装 上衣+阔腿裤</h3>
+          <p class="arrival-text">清凉薄荷色系，棉麻透气面料，一套搞定出门穿搭，懒人必备。</p>
+          <div class="arrival-meta">
+            <span class="arrival-price">¥228</span>
+            <span class="arrival-date">🔥 热卖中</span>
+          </div>
+        </div>
+      </div>
+      <div class="arrival-card animate-on-scroll">
+        <div class="arrival-img">🌻</div>
+        <div class="arrival-info">
+          <span class="arrival-badge">3月12日上新</span>
+          <h3 class="arrival-name">向日葵刺绣背带裙 内搭白T恤</h3>
+          <p class="arrival-text">可爱的向日葵手工刺绣，背带裙+T恤两件套，活力满满。</p>
+          <div class="arrival-meta">
+            <span class="arrival-price">¥198</span>
+            <span class="arrival-date">💛 新客最爱</span>
+          </div>
+        </div>
+      </div>
+      <div class="arrival-card animate-on-scroll">
+        <div class="arrival-img">🍂</div>
+        <div class="arrival-info">
+          <span class="arrival-badge">3月10日上新</span>
+          <h3 class="arrival-name">复古格纹马甲 叠穿神器 森系文艺</h3>
+          <p class="arrival-text">经典格纹设计，可叠穿衬衫/T恤，一年四季都能穿的百搭单品。</p>
+          <div class="arrival-meta">
+            <span class="arrival-price">¥148</span>
+            <span class="arrival-date">⭐ 口碑款</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Buyer Show -->
+<section class="buyer-show" id="show">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">BUYER SHOW</span>
+      <h2 class="section-title">买家秀精选</h2>
+      <p class="section-desc">来自真实买家的穿搭分享，每一张都是心动</p>
+    </div>
+    <div class="show-grid">
+      <div class="show-card animate-on-scroll">
+        <div class="show-img show-img-bg1">
+          📸
+          <span class="show-rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <div class="show-body">
+          <div class="show-user">
+            <div class="show-avatar">L</div>
+            <span class="show-name">林小***鹿 · 3天前</span>
+          </div>
+          <p class="show-text">裙子质量太好了！面料很舒服，穿着去公园拍照超级出片！颜色和图片一模一样，已推荐给闺蜜们～</p>
+        </div>
+      </div>
+      <div class="show-card animate-on-scroll">
+        <div class="show-img show-img-bg2">
+          📸
+          <span class="show-rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <div class="show-body">
+          <div class="show-user">
+            <div class="show-avatar">W</div>
+            <span class="show-name">温柔***猫 · 5天前</span>
+          </div>
+          <p class="show-text">第三次回购了！这家店的风格完全是我的菜。棉麻面料穿着特别舒服，适合我这种喜欢文艺风的～下次还来！</p>
+        </div>
+      </div>
+      <div class="show-card animate-on-scroll">
+        <div class="show-img show-img-bg3">
+          📸
+          <span class="show-rating">⭐⭐⭐⭐⭐</span>
+        </div>
+        <div class="show-body">
+          <div class="show-user">
+            <div class="show-avatar">S</div>
+            <span class="show-name">森***子 · 1周前</span>
+          </div>
+          <p class="show-text">开衫真的绝了！薄厚适中，春天穿刚刚好。搭配碎花裙超级温柔，同事都问我在哪买的哈哈！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Store Announcement -->
+<section class="announcement" id="announce">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">NOTICE</span>
+      <h2 class="section-title">店铺公告</h2>
+      <p class="section-desc">最新活动与重要通知</p>
+    </div>
+    <div class="announce-grid">
+      <div class="announce-main animate-on-scroll">
+        <h3>🌿 春季焕新季 · 全年最大优惠</h3>
+        <p>亲爱的森友们，春季活动火热进行中！全场满减、新品折扣、会员专享价等你来拿～</p>
+        <div class="announce-list">
+          <div class="announce-item">
+            <div class="announce-dot"></div>
+            <div class="announce-item-text">
+              <h4>🎉 全场满199减30，满399减80</h4>
+              <p>活动时间：3月15日 - 3月31日</p>
+            </div>
+          </div>
+          <div class="announce-item">
+            <div class="announce-dot"></div>
+            <div class="announce-item-text">
+              <h4>💝 新客首单立享9折 + 包邮</h4>
+              <p>新关注店铺即可领取，限首单使用</p>
+            </div>
+          </div>
+          <div class="announce-item">
+            <div class="announce-dot"></div>
+            <div class="announce-item-text">
+              <h4>📦 48小时内发货 · 顺丰/韵达随机</h4>
+              <p>偏远地区补差价，详情咨询客服</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="announce-side">
+        <div class="announce-card animate-on-scroll">
+          <div class="announce-card-icon">🎁</div>
+          <h4>收藏店铺有礼</h4>
+          <p>收藏店铺即可领取5元无门槛优惠券，新老客均可领取，有效期30天。</p>
+        </div>
+        <div class="announce-card animate-on-scroll">
+          <div class="announce-card-icon">💬</div>
+          <h4>售后无忧保障</h4>
+          <p>支持7天无理由退换，运费险已投保。尺码不合免费换，质量问题包退换。</p>
+        </div>
+        <div class="announce-card animate-on-scroll">
+          <div class="announce-card-icon">⏰</div>
+          <h4>客服在线时间</h4>
+          <p>每日 9:00 - 23:00 在线，旺旺/千牛均可联系。非工作时间留言，次日回复。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Store Features -->
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item animate-on-scroll">
+        <span class="feature-icon">🌱</span>
+        <div class="feature-title">原创设计</div>
+        <div class="feature-desc">每款均为工作室原创，拒绝撞衫</div>
+      </div>
+      <div class="feature-item animate-on-scroll">
+        <span class="feature-icon">🧵</span>
+        <div class="feature-title">优质面料</div>
+        <div class="feature-desc">精选棉麻雪纺，亲肤透气舒适</div>
+      </div>
+      <div class="feature-item animate-on-scroll">
+        <span class="feature-icon">📦</span>
+        <div class="feature-title">闪电发货</div>
+        <div class="feature-desc">48小时内极速发货，让你少等一天</div>
+      </div>
+      <div class="feature-item animate-on-scroll">
+        <span class="feature-icon">💚</span>
+        <div class="feature-title">无忧售后</div>
+        <div class="feature-desc">7天无理由退换，运费险全覆盖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>🌿 森屿田园</h3>
+        <p>专注森系田园原创女装，用自然的色彩和舒适的面料，为每一位热爱生活的女孩打造属于自己的田园衣橱。我们相信，穿在身上的不只是衣服，更是一种生活态度。</p>
+      </div>
+      <div class="footer-col">
+        <h4>购物指南</h4>
+        <a href="#">尺码对照表</a>
+        <a href="#">面料说明</a>
+        <a href="#">洗涤保养</a>
+        <a href="#">搭配推荐</a>
+      </div>
+      <div class="footer-col">
+        <h4>售后服务</h4>
+        <a href="#">退换货政策</a>
+        <a href="#">运费说明</a>
+        <a href="#">投诉建议</a>
+        <a href="#">常见问题</a>
+      </div>
+      <div class="footer-col">
+        <h4>关注我们</h4>
+        <a href="#">淘宝店铺</a>
+        <a href="#">小红书</a>
+        <a href="#">微博</a>
+        <a href="#">微信公众号</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 森屿田园 · 原创森系女装 | 淘宝店铺 | 让每一天都住进森林里 🌲</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Animations & Interactions -->
+<script>
+// Sticky header shadow
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll-triggered animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// Fav button toggle
+document.querySelectorAll('.product-fav').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    this.textContent = this.textContent === '♡' ? '♥' : '♡';
+    this.style.color = this.textContent === '♥' ? '#e05555' : '';
+    this.style.background = this.textContent === '♥' ? '#ffe8e8' : '';
+  });
+});
+
+// Smooth number counter for sales
+function animateValue(el, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    el.textContent = '月销 ' + Math.floor(progress * (end - start) + start).toLocaleString() + '+';
+    if (progress < 1) window.requestAnimationFrame(step);
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Parallax on hero circles
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const circles = document.querySelectorAll('.hero-circle');
+  circles.forEach((c, i) => {
+    c.style.transform = `translateY(${scrolled * (0.1 + i * 0.05)}px)`;
+  });
+});
+</script>
+
+</body>
+</html>
